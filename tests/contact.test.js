@@ -31,7 +31,7 @@ describe("POST /contacts", () => {
     const res = await request(app)
       .post("/contacts")
       .send({
-        email: "shiva@example.com" // Missing name & phone_number
+        email: "shiva@example.com" 
       });
 
     expect(res.statusCode).toBe(400);
@@ -40,3 +40,12 @@ describe("POST /contacts", () => {
 
   });
 });
+
+describe("GET /contacts", () => {
+  it("should return all contacts", async () => {
+    const res = await request(app).get("/contacts");
+    expect(res.statusCode).toBe(200);
+    expect(Array.isArray(res.body)).toBe(true);
+  });
+});
+

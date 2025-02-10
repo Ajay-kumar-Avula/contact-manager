@@ -57,3 +57,13 @@ exports.deleteContact = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+//  SEARCH Contacts
+exports.searchContacts = async (req, res) => {
+  try {
+    const contacts = await Contact.find({ name: { $regex: req.query.q, $options: 'i' } });
+    res.status(200).json(contacts);
+  } catch (error) { 
+    res.status(500).json({ error: 'Server error' });
+  } 
+};

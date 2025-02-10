@@ -23,5 +23,7 @@ router.post(
 );
 router.put('/:id', updateContact);
 router.delete('/:id', deleteContact);
+router.get('/search', searchContacts);
+
 
 module.exports = router;
